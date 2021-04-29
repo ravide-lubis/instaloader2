@@ -222,7 +222,7 @@ class InstaloaderContext:
         enc_password = '#PWD_INSTAGRAM_BROWSER:0:{}:{}'.format(int(datetime.now().timestamp()), passwd)
         login = session.post('https://www.instagram.com/accounts/login/ajax/',
                              data={'enc_password': enc_password, 'username': user}, allow_redirects=True,
-                             proxies=self.proxies)
+                             proxies=self.proxies, verify=False)
         try:
             resp_json = login.json()
         except json.decoder.JSONDecodeError as err:
